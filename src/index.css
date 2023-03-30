@@ -1,0 +1,15 @@
+@font-face {
+  font-family: 'Roboto';
+  src: url('./fonts/Roboto-Regular.ttf') format('truetype');
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: red;
+  font-family: 'Roboto';
+  background-image: url('./assets/rainy-bg.jpg');
+}

@@ -1,0 +1,40 @@
+{
+  "name": "weather-sounds",
+  "version": "1.0.0",
+  "description": "weather sounds app",
+  "private": true,
+  "scripts": {
+    "start": "npx webpack serve --config webpack.config.dev.js",
+    "build": "npx webpack --config webpack.config.prod.js",
+    "build:dev": "npx webpack --config webpack.config.dev.js",
+    "eslint": "npx eslint src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jatematik/weather-sounds.git"
+  },
+  "author": "Dmitry",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jatematik/weather-sounds/issues"
+  },
+  "homepage": "https://github.com/Jatematik/weather-sounds#readme",
+  "devDependencies": {
+    "copy-webpack-plugin": "^11.0.0",
+    "css-loader": "^6.7.3",
+    "css-minimizer-webpack-plugin": "^5.0.0",
+    "eslint": "^8.37.0",
+    "eslint-loader": "^4.0.2",
+    "eslint-webpack-plugin": "^4.0.0",
+    "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.7.5",
+    "sass": "^1.60.0",
+    "sass-loader": "^13.2.2",
+    "style-loader": "^3.3.2",
+    "terser-webpack-plugin": "^5.3.7",
+    "webpack": "^5.77.0",
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.13.1",
+    "webpack-merge": "^5.8.0"
+  }
+}
