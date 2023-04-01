@@ -1,7 +1,14 @@
 import './index.css'
-import testAudio from './assets/sounds/summer.mp3'
+import data from './data'
+import MusicBox from './components/MusicBox'
 
-const myAudio = new Audio(testAudio);
-(myAudio.play())()
+const root = document.getElementById('root')
+const wrapper = document.createElement('div')
+const title = document.createElement('h1')
 
-console.log('init');
+title.textContent = 'Weather sounds'
+wrapper.classList.add('wrapper')
+root.append(title, wrapper)
+
+const music = new MusicBox({data, wrapper})
+music.init()

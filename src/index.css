@@ -9,7 +9,55 @@
 }
 
 body {
-  background-color: red;
   font-family: 'Roboto';
-  background-image: url('./assets/rainy-bg.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  backdrop-filter: blur(5px);
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
+  transition: 0.25s;
+}
+
+h1 {
+  color: orange;
+  text-align: center;
+  padding: 20px;
+}
+
+.wrapper {
+  display: flex;
+  max-width: 700px;
+  margin: auto;
+  padding: 20px 0;
+  justify-content: space-between;
+  backdrop-filter: blur(8px);
+}
+
+.sound-item {
+  height: 200px;
+  width: 200px;
+  border-radius: 10px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  border: 1px solid #c4c4c4;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  height: 50px;
+  width: 50px;
+}
+
+.current {
+  border: 1px solid orange;
+}
+
+input {
+  display: block;
+  margin: auto;
 }
