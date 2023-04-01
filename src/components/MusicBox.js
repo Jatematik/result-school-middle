@@ -1,4 +1,4 @@
-import pauseIcon from '../assets/icons/pause.svg'
+import pauseIcon from '../../public/assets/icons/pause.svg'
 
 class MusicBox {
   constructor({data, wrapper}) {

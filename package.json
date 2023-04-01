@@ -20,7 +20,6 @@
   },
   "homepage": "https://github.com/Jatematik/weather-sounds#readme",
   "devDependencies": {
-    "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.7.3",
     "css-minimizer-webpack-plugin": "^5.0.0",
     "eslint": "^8.37.0",

@@ -6,6 +6,7 @@ const commonRequire = require('./webpack.config.js')
 module.exports = merge(commonRequire, {
   mode: 'production',
   optimization: {
+    minimize: true,
     minimizer: [
       new CssMinimizerPlugin(),
       new TerserPlugin()

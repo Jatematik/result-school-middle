@@ -1,4 +1,3 @@
-const CopyPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path')
@@ -10,20 +9,12 @@ module.exports = {
     filename: '[name].[contenthash].js',
     path: path.resolve(__dirname, 'dist'),
     clean: true,
-    // assetModuleFilename: 'assets/images/[name][ext]'
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'public/index.html')
+      template: path.resolve(__dirname, 'public/index.html'),
+      favicon: path.resolve(__dirname, 'public/favicon.png')
     }),
-    // new CopyPlugin({
-    //   patterns: [
-    //     {
-    //       from: path.resolve(__dirname, 'src/assets'), 
-    //       to: path.resolve(__dirname, 'dist/assets'), 
-    //     }
-    //   ],
-    // }),
     new MiniCssExtractPlugin(),
   ],
   module: {

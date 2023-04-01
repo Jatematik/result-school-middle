@@ -1,4 +1,3 @@
-// const ESLintPlugin = require('eslint-webpack-plugin');
 const { merge } = require('webpack-merge')
 const commonRequire = require('./webpack.config.js')
 
@@ -9,7 +8,4 @@ module.exports = merge(commonRequire, {
     hot: true,
     open: true
   },
-  // plugins: [new ESLintPlugin({
-  //   extensions: ['js']
-  // })],
 })

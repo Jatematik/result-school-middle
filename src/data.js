@@ -1,14 +1,14 @@
-import rainBg from './assets/rainy-bg.jpg'
-import cloudRainIcon from './assets/icons/cloud-rain.svg'
-import rainSound from './assets/sounds/rain.mp3'
+import rainBg from '../public/assets/rainy-bg.jpg'
+import cloudRainIcon from '../public/assets/icons/cloud-rain.svg'
+import rainSound from '../public/assets/sounds/rain.mp3'
 
-import summerBg from './assets/summer-bg.jpg'
-import cloudSummerIcon from './assets/icons/sun.svg'
-import summerSound from './assets/sounds/summer.mp3'
+import summerBg from '../public/assets/summer-bg.jpg'
+import cloudSummerIcon from '../public/assets/icons/sun.svg'
+import summerSound from '../public/assets/sounds/summer.mp3'
 
-import winterBg from './assets/winter-bg.jpg'
-import cloudWinterIcon from './assets/icons/cloud-snow.svg'
-import winterSound from './assets/sounds/winter.mp3'
+import winterBg from '../public/assets/winter-bg.jpg'
+import cloudWinterIcon from '../public/assets/icons/cloud-snow.svg'
+import winterSound from '../public/assets/sounds/winter.mp3'
 
 export default [
   {
