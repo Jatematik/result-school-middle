@@ -10,7 +10,7 @@ import winterBg from '../public/assets/winter-bg.jpg'
 import cloudWinterIcon from '../public/assets/icons/cloud-snow.svg'
 import winterSound from '../public/assets/sounds/winter.mp3'
 
-export default [
+export const data = [
   {
     id: 'rain',
     image: rainBg,

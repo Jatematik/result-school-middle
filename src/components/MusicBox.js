@@ -1,6 +1,6 @@
 import pauseIcon from '../../public/assets/icons/pause.svg'
 
-class MusicBox {
+export class MusicBox {
   constructor({data, wrapper}) {
     this.data = data
     this.wrapper = wrapper
@@ -145,5 +145,3 @@ class MusicBox {
     this.input = input
   }
 }
-
-export default MusicBox
