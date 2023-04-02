@@ -1,6 +1,6 @@
 import './index.css'
-import data from './data'
-import MusicBox from './components/MusicBox'
+import {data} from './data'
+import {MusicBox} from './components/MusicBox'
 
 const root = document.getElementById('root')
 const wrapper = document.createElement('div')

@@ -1,6 +1,5 @@
 import pauseIcon from '../../public/assets/icons/pause.svg'
-
-class MusicBox {
+export class MusicBox {
   constructor({data, wrapper}) {
     this.data = data
     this.wrapper = wrapper
@@ -9,19 +8,13 @@ class MusicBox {
     this.isPlay = false
     this.currentSoundId = 0
     this.slideId = null
-    this.value = 0
-    this.step = 0
   }
 
-  range(e) {
-    let value = e.target.value
-
+  setVolume(e) {
     this.soundsNode.forEach((sound, i) => {
       if (this.currentSoundId === i) {
         if (this.findAudio(sound)) {
-          const a = this.findAudio(sound).duration / 100
-          this.value = Number(value)
-          this.findAudio(sound).currentTime = value * a
+          this.findAudio(sound).volume = e.target.value / 100
         }
       }
     })
@@ -37,20 +30,11 @@ class MusicBox {
     if (!this.isPlay) {
       audio.play()
       this.isPlay = true
+      audio.volume = this.input.value / 100
 
       this.soundsNode.forEach((sound, i) => {
         this.findIcon(sound).src = this.data[i].icon
       })
-
-      this.step = 100 / audio.duration
-      this.slideId = setInterval(() => {
-        this.input.value = this.value
-        this.value = this.value + this.step
-        if (this.value > 100) {
-          clearInterval(this.slideId)
-          this.reset()
-        }
-      }, 1000)
     } else {
       this.stop(audio, index)
     }
@@ -76,7 +60,7 @@ class MusicBox {
   }
 
   switchTrack(index) {
-    this.reset()
+    this.isPlay = false
     this.soundsNode.forEach((sound, i) => {
       this.findAudio(sound).pause();
       this.findAudio(sound).currentTime = 0;
@@ -84,12 +68,6 @@ class MusicBox {
     })
     clearInterval(this.slideId)
     this.currentSoundId = index
-  }
-
-  reset() {
-    this.isPlay = false
-    this.value = 0
-    this.input.value = 0
   }
 
   setBg(index) {
@@ -105,29 +83,24 @@ class MusicBox {
 
   init() {
     this.data.forEach((item, i) => {
-      const div = document.createElement('div')
-      div.classList.add('sound-item')
-      div.style.cssText = `
+      const button = document.createElement('button')
+      button.classList.add('sound-item')
+      button.style.cssText = `
         background-image: url(${item.image});
       `
       const icon = document.createElement('img')
       icon.classList.add('icon')
       icon.src = item.icon
 
-      div.appendChild(icon)
+      button.appendChild(icon)
 
-      if (i === this.currentSoundId) {
-        document.body.style.backgroundImage = `url(${item.image})`
-        div.classList.add('current')
-      }
-
-      const audio = document.createElement('audio')
+      const audio = new Audio()
       audio.src = item.sound
 
-      div.appendChild(audio)
-      this.wrapper.appendChild(div)
+      button.appendChild(audio)
+      this.wrapper.appendChild(button)
     
-      div.addEventListener('click', () => {
+      button.addEventListener('click', () => {
         this.play(audio, i)
       })
     })
@@ -136,14 +109,12 @@ class MusicBox {
 
     const input = document.createElement('input')
     input.type = 'range'
-    input.value = 0
+    input.value = 50
     input.addEventListener('input', (e) => {
-      this.range(e)
+      this.setVolume(e)
     })
 
     this.wrapper.after(input)
     this.input = input
   }
 }
-
-export default MusicBox
