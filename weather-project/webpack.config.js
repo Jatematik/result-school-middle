@@ -4,7 +4,7 @@ const path = require('path')
 
 module.exports = {
   context: path.resolve(__dirname, 'src'),
-  entry: './index.js',
+  entry: './index.ts',
   output: {
     filename: '[name].[contenthash].js',
     path: path.resolve(__dirname, 'dist'),
@@ -17,6 +17,9 @@ module.exports = {
     }),
     new MiniCssExtractPlugin(),
   ],
+  resolve: {
+    extensions: ['.ts', '.js']
+  },
   module: {
     rules: [
       {
@@ -51,6 +54,11 @@ module.exports = {
         generator: {
           filename: 'assets/sounds/[name][ext][query]'
         }
+      },
+      {
+        test: /\.ts?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
       },
     ],
   },
