@@ -1,19 +1,18 @@
 import { useCallback, useEffect, useState } from 'react';
-import { PostType } from '../types';
 
 interface Options<T> extends RequestInit {
   params?: T;
 }
 
-export interface FetchTypes {
-  data: PostType[];
+export interface FetchTypes<T> {
+  data: T;
   isLoading: boolean;
   error: string | unknown;
   refetch: <T>(options?: Options<T>) => void;
 }
 
-export const useFetch = (url: string): FetchTypes => {
-  const [data, setData] = useState<PostType[]>([]);
+export const useFetch = <T>(url: string): FetchTypes<T[]> => {
+  const [data, setData] = useState<T[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | unknown>('');
 
