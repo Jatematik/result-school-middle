@@ -2,7 +2,7 @@ import React from 'react';
 import { useFetch } from '../hooks/useFetch';
 import { PostType } from '../types';
 
-export const FetchComponent: React.FC<FetchComponentProps> = () => {
+export const FetchComponent: React.FC = () => {
   const { data, isLoading, error, refetch } = useFetch<PostType>(
     'https://jsonplaceholder.typicode.com/posts'
   );
@@ -30,5 +30,3 @@ export const FetchComponent: React.FC<FetchComponentProps> = () => {
     </>
   );
 };
-
-interface FetchComponentProps {}
