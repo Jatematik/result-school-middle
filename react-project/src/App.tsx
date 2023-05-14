@@ -1,12 +1,12 @@
 import React from 'react';
 import './App.css';
 
-import { Signin } from './components/Signin/Signin';
+import { UserForms } from './components/UserForms/UserForms';
 
 function App() {
   return (
     <>
-      <Signin />
+      <UserForms />
     </>
   );
 }

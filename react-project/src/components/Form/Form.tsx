@@ -1,30 +1,16 @@
-import React, { FormHTMLAttributes, ReactNode } from 'react';
-import styled from 'styled-components';
+import React, { PropsWithChildren, FormEvent, RefObject, FC } from 'react';
+import { Button, FormComponent } from './Form.styles';
 
-export const Form: React.FC<FormProps> = React.forwardRef<
-  HTMLFormElement,
-  FormProps
->(({ children, ...props }, ref) => {
-  return (
-    <FormComponent ref={ref} {...props}>
-      {children}
-    </FormComponent>
-  );
-});
-
-interface FormProps extends FormHTMLAttributes<HTMLFormElement> {
-  children?: ReactNode;
+interface FormProps extends PropsWithChildren {
+  refForm: RefObject<HTMLFormElement>;
+  onSubmit: (event: FormEvent<HTMLFormElement>) => void;
 }
 
-const FormComponent = styled.form`
-  margin: auto;
-  margin-top: 50px;
-  width: 400px;
-  padding: 20px;
-  border-radius: 5px;
-  border: 1px solid black;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-`;
+export const Form: FC<FormProps> = ({ refForm, onSubmit, children }) => {
+  return (
+    <FormComponent ref={refForm} onSubmit={onSubmit}>
+      {children}
+      <Button type="submit">Войти</Button>
+    </FormComponent>
+  );
+};

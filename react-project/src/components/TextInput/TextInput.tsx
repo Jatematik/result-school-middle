@@ -1,11 +1,30 @@
-import React, { InputHTMLAttributes } from 'react';
-import styled, { CSSProp } from 'styled-components';
+import React, { FC, InputHTMLAttributes, ReactNode } from 'react';
+import { CSSProp } from 'styled-components';
+import {
+  Container,
+  Input,
+  Label,
+  RequiredSpan,
+  Wrapper,
+  RadioLabel,
+  WithIcon,
+  IconContainer,
+} from './TextInput.styles';
 
-export const TextInput: React.FC<TextInputProps> = ({
+interface TextInputProps extends InputHTMLAttributes<HTMLInputElement> {
+  containerStyles?: CSSProp;
+  label?: string;
+  radioValues?: string[];
+  icon?: ReactNode;
+}
+
+export const TextInput: FC<TextInputProps> = ({
   containerStyles = {},
   id,
   label,
-  required,
+  required = false,
+  radioValues,
+  icon,
   ...props
 }) => {
   return (
@@ -16,56 +35,33 @@ export const TextInput: React.FC<TextInputProps> = ({
           {required && <RequiredSpan>*</RequiredSpan>}
         </Label>
       )}
-      <Input {...props} $CSS={containerStyles} id={id} />
+      {radioValues ? (
+        radioValues.map((item) => (
+          <Wrapper key={item}>
+            <Input
+              $CSS={containerStyles}
+              id={item}
+              value={item}
+              required={required}
+              {...props}
+            />
+            <RadioLabel htmlFor={item}>{item}</RadioLabel>
+          </Wrapper>
+        ))
+      ) : icon ? (
+        <WithIcon>
+          <IconContainer>{icon}</IconContainer>
+          <Input
+            $CSS={containerStyles}
+            icon={icon}
+            id={id}
+            required={required}
+            {...props}
+          />
+        </WithIcon>
+      ) : (
+        <Input $CSS={containerStyles} id={id} required={required} {...props} />
+      )}
     </Container>
   );
 };
-
-interface TextInputProps extends InputHTMLAttributes<HTMLInputElement> {
-  containerStyles?: CSSProp;
-  label?: string;
-}
-
-interface InputProps {
-  $CSS?: CSSProp;
-}
-
-const Container = styled.div`
-  width: 100%;
-  margin-bottom: 10px;
-  display: flex;
-  flex-direction: column;
-`;
-
-const Label = styled.label`
-  font-size: 18px;
-  font-weight: 700;
-  color: #000;
-  margin-bottom: 4px;
-`;
-
-const RequiredSpan = styled.span`
-  font-size: 18px;
-  font-weight: 700;
-  margin-left: 3px;
-  color: #ca1414;
-`;
-
-const Input = styled.input<InputProps>`
-  font-family: sans-serif;
-  padding: 10px;
-  border: 1px solid #ced4da;
-  border-radius: 5px;
-  outline: none;
-  width: 100%;
-  font-size: 16px;
-
-  &::placeholder {
-    color: #ced4da;
-    font-size: 16px;
-  }
-
-  &:focus {
-    border-color: #228be6;
-  }
-`;
